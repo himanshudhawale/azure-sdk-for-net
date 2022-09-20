@@ -13,6 +13,13 @@ namespace Azure.Compute.Batch
 {
     public abstract class BaseClient
     {
+        public Func<Response, BinaryData> ContentHandler { get; set; }
+
+        protected virtual BinaryData GetContent(Response response)
+        {
+            return ContentHandler(response) ?? response.Content;
+        }
+
         private Response<T> HandleResponse<T>(Response response, Func<JsonElement, T> deserialize)
         {
             T model = deserialize(JsonDocument.Parse(response.Content).RootElement);

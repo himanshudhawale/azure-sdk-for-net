@@ -10,7 +10,7 @@ using Azure.Core.Pipeline;
 namespace Azure.Compute.Batch
 {
     [CodeGenModel("Application")]
-    public partial class ApplicationClient
+    public partial class ApplicationClient : BaseClient
     {
     }
 }

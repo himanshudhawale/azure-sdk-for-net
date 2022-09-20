@@ -7,7 +7,7 @@ namespace Azure.Compute.Batch.Tests
 {
     public class BatchClientTestEnvironment : TestEnvironment
     {
-        public string Endpoint => GetRecordedVariable("Batch_ENDPOINT");
+        public string Endpoint => GetRecordedVariable("BATCH_ENDPOINT");
 
         // Add other client paramters here as above.
     }

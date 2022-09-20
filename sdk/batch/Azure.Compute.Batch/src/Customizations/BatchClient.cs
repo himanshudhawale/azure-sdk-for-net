@@ -11,8 +11,6 @@ namespace Azure.Compute.Batch
 {
     public partial class BatchClient
     {
-        private string batchUrl;
-
         private AccountClient accountClient;
         private ApplicationClient applicationClient;
         private CertificateClient certificateClient;
@@ -23,6 +21,10 @@ namespace Azure.Compute.Batch
         private JobScheduleClient jobScheduleClient;
         private PoolClient poolClient;
         private TaskClient taskClient;
+
+#pragma warning disable CA1056 // URI-like properties should not be strings
+        public string BatchUrl { get; set; }
+#pragma warning restore CA1056 // URI-like properties should not be strings
 
         #region Subclient Properties
 
@@ -158,11 +160,11 @@ namespace Azure.Compute.Batch
 
         #endregion Subclient Properties
 
-        internal BatchClient(TokenCredential credential) : this(credential, new BatchClientOptions())
+        private BatchClient(TokenCredential credential) : this(credential, new BatchClientOptions())
         {
         }
 
-        internal BatchClient(TokenCredential credential, BatchClientOptions options)
+        private BatchClient(TokenCredential credential, BatchClientOptions options)
         {
             Argument.AssertNotNull(credential, nameof(credential));
             options ??= new BatchClientOptions();
@@ -177,59 +179,59 @@ namespace Azure.Compute.Batch
 #pragma warning restore CA1054 // URI-like parameters should not be strings
             : this(credential, options)
         {
-            this.batchUrl = batchUrl;
+            this.BatchUrl = batchUrl;
         }
 
         #region Subclient Factories
 
         public AccountClient CreateAccountClient()
         {
-            return this.GetAccountClientClient(batchUrl);
+            return this.GetAccountClientClient(BatchUrl);
         }
 
         public ApplicationClient CreateApplicationClient()
         {
-            return this.GetApplicationClientClient(batchUrl);
+            return this.GetApplicationClientClient(BatchUrl);
         }
 
         public CertificateClient CreateCertificateClient()
         {
-            return this.GetCertificateClientClient(batchUrl);
+            return this.GetCertificateClientClient(BatchUrl);
         }
 
         public ComputeNodeClient CreateComputeNodeClient()
         {
-            return this.GetComputeNodeClientClient(batchUrl);
+            return this.GetComputeNodeClientClient(BatchUrl);
         }
 
         public ComputeNodeExtensionClient CreateComputeNodeExtensionClient()
         {
-            return this.GetComputeNodeExtensionClientClient(batchUrl);
+            return this.GetComputeNodeExtensionClientClient(BatchUrl);
         }
 
         public FileClient CreateFileClient()
         {
-            return this.GetFileClientClient(batchUrl);
+            return this.GetFileClientClient(BatchUrl);
         }
 
         public JobClient CreateJobClient()
         {
-            return this.GetJobClientClient(batchUrl);
+            return this.GetJobClientClient(BatchUrl);
         }
 
         public JobScheduleClient CreateJobScheduleClient()
         {
-            return this.GetJobScheduleClientClient(batchUrl);
+            return this.GetJobScheduleClientClient(BatchUrl);
         }
 
         public PoolClient CreatePoolClient()
         {
-            return this.GetPoolClientClient(batchUrl);
+            return this.GetPoolClientClient(BatchUrl);
         }
 
         public TaskClient CreateTaskClient()
         {
-            return this.GetTaskClientClient(batchUrl);
+            return this.GetTaskClientClient(BatchUrl);
         }
 
         #endregion Subclient Factories

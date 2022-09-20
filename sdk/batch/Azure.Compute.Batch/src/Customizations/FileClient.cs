@@ -6,7 +6,7 @@ using Azure.Core;
 namespace Azure.Compute.Batch
 {
     [CodeGenModel("File")]
-    public partial class FileClient
+    public partial class FileClient : BaseClient
     {
     }
 }

@@ -6,7 +6,7 @@ using Azure.Core;
 namespace Azure.Compute.Batch
 {
     [CodeGenModel("Account")]
-    public partial class AccountClient
+    public partial class AccountClient : BaseClient
     {
     }
 }

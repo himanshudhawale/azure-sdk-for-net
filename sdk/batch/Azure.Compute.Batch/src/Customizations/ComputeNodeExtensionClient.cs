@@ -6,7 +6,7 @@ using Azure.Core;
 namespace Azure.Compute.Batch
 {
     [CodeGenModel("ComputeNodeExtension")]
-    public partial class ComputeNodeExtensionClient
+    public partial class ComputeNodeExtensionClient : BaseClient
     {
     }
 }

@@ -6,7 +6,7 @@ using Azure.Core;
 namespace Azure.Compute.Batch
 {
     [CodeGenModel("Certificate")]
-    public partial class CertificateClient
+    public partial class CertificateClient : BaseClient
     {
     }
 }
